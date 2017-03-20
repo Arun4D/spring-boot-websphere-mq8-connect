@@ -8,20 +8,20 @@ Add the MQ details to `application.properties` file.
 
 Example:
 ````
-cdi.mq.queueManager= << queueManager >>
-cdi.mq.host= << xx.xx.xx.xxx >>
-cdi.mq.port= << port >>
-cdi.mq.channel= << channel >>
-cdi.mq.userid=MUSR_MQADMIN 
-cdi.mq.password=password
+customer.mq.queueManager= << queueManager >>
+customer.mq.host= << xx.xx.xx.xxx >>
+customer.mq.port= << port >>
+customer.mq.channel= << channel >>
+customer.mq.userid=MUSR_MQADMIN 
+customer.mq.password=password
 ````
-> Note: Default IBM  websphere MQ user id `MUSR_MQADMIN  and password is `password`
+> Note: Default IBM  websphere MQ user id `MUSR_MQADMIN`  and password is `password`
     
 ### Step2:
 Add the java class to read the properties.
 
 ````
-@ConfigurationProperties(prefix = "cdi.mq")
+@ConfigurationProperties(prefix = "customer.mq")
 @Data
 public class MQProperties {
     String queueManager;
@@ -37,7 +37,6 @@ Add the config class to create MQQueueConnectionFactory and jmsTemplate.
 
 ````
 @Configuration
-@Profile("non-jee")
 public class AppConfig {
 
     @Autowired
